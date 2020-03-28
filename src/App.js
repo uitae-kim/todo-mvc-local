@@ -1,8 +1,16 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
+import {
+  Container,
+  Header,
+  Section,
+  Footer,
+} from "./components";
 
 const GlobalStyle = createGlobalStyle`
-  
+  body {
+    background: #f5f5f5;
+  }
 `;
 
 function App() {
