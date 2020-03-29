@@ -40,8 +40,8 @@ export const Section = () => {
   }, [value, todos, setTodos, setValue]);
 
   const handleClear = React.useCallback(() => {
-
-  }, []);
+    setTodos(todos.filter(x => x !== "done"));
+  }, [todos, setTodos]);
 
 
   return <StyledSection>
@@ -53,11 +53,13 @@ export const Section = () => {
         onKeyPress={addTodo}
         onChange={(e) => { setValue(e.target.value); }} />
     </div>
-    {todos.map(todo => <TodoItem
-      todo={todo}
-      handleDelete={deleteTodo}
-      handleUpdate={updateTodo}
-      key={todo.id} />)}
+    {todos
+      .filter(todo => filter === "all" ? true : filter === "completed" ? todo.done : !todo.done)
+      .map(todo => <TodoItem
+        todo={todo}
+        handleDelete={deleteTodo}
+        handleUpdate={updateTodo}
+        key={todo.id} />)}
     {todos.length ? <Filter
       filter={filter}
       setFilter={setFilter}
