@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
+  margin-top: 32px;
   p {
     text-align: center;
     color: rgb(191, 191, 191);

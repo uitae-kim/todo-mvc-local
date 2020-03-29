@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
+import Filter from "./Filter";
 import { Input } from "./Input";
 let todoCounter = 1;
 
@@ -21,6 +22,7 @@ const StyledSection = styled.section`
 export const Section = () => {
   const [value, setValue] = React.useState("");
   const [todos, setTodos] = React.useState([{ id: 0, done: false, content: "Hello~" }]);
+  const [filter, setFilter] = React.useState("all");
 
   const deleteTodo = React.useCallback((id) => {
     setTodos(todos.filter(todo => todo.id !== id));
@@ -37,6 +39,11 @@ export const Section = () => {
     }
   }, [value, todos, setTodos, setValue]);
 
+  const handleClear = React.useCallback(() => {
+
+  }, []);
+
+
   return <StyledSection>
     <div style={{ display: "flex", alignItems: "center" }}>
       <label style={{ color: "rgba(77, 77, 77, 0.2)" }}>{"❯"}</label>
@@ -51,5 +58,11 @@ export const Section = () => {
       handleDelete={deleteTodo}
       handleUpdate={updateTodo}
       key={todo.id} />)}
+    {todos.length ? <Filter
+      filter={filter}
+      setFilter={setFilter}
+      count={todos.length}
+      clear={handleClear}
+    /> : null}
   </StyledSection>;
 };

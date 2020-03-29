@@ -9,7 +9,7 @@ const StyledTodoItem = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  border-top: 1px solid rgba(27, 28, 37, 0.2);
+  border-top: 1px solid rgba(77, 77, 77, 0.2);
 `;
 
 const CheckboxWrapper = styled.div`
