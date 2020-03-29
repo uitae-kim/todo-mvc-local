@@ -5,6 +5,7 @@ const StyledFooter = styled.footer`
   p {
     text-align: center;
     color: rgb(191, 191, 191);
+    font-weight: 300;
     font-size: 10px;
     margin: 10px 0;
   }
