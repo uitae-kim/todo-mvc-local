@@ -18,6 +18,12 @@ const StyledSection = styled.section`
   }
 `;
 
+const StyledLabel = styled.label`
+   color: ${props => props.allCompleted ? "#777" : "rgba(77, 77, 77, 0.2)"};
+   cursor: pointer;
+   transition: color 0.3s ease-out;
+`;
+
 
 export const Section = () => {
   const [value, setValue] = React.useState("");
@@ -43,10 +49,16 @@ export const Section = () => {
     setTodos(todos.filter(x => x !== "done"));
   }, [todos, setTodos]);
 
+  const handleToggleAll = React.useCallback(() => {
+    setTodos(todos.map(todo => ({ ...todo, done: !todos.every(todo => todo.done) })));
+  }, [todos, setTodos]);
+
 
   return <StyledSection>
     <div style={{ display: "flex", alignItems: "center" }}>
-      <label style={{ color: "rgba(77, 77, 77, 0.2)" }}>{"❯"}</label>
+      <StyledLabel onClick={handleToggleAll} allCompleted={todos.every(todo => todo.done)}>
+        {"❯"}
+      </StyledLabel>
       <Input
         placeholder="What needs to be done?"
         value={value}
