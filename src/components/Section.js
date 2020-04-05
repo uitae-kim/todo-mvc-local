@@ -49,10 +49,33 @@ export const Section = () => {
 
   const handleClear = React.useCallback(() => {
     // setTodos(todos.filter(x => x !== "done"));
+
+    /**
+      Task #1
+
+      complete 'handleClear' function with redux.
+      create a new action with its appropriate ActionType, action creator and reducer case.
+
+      files should be modified:
+      - components/Section.js
+      - redux/ActionType.js
+      - redux/actions/TodoActions.js
+      - redux/reducers/TodoReducer.js
+    */
   }, []);
 
   const handleToggleAll = React.useCallback(() => {
     // setTodos(todos.map(todo => ({ ...todo, done: !todos.every(todo => todo.done) })));
+
+    /**
+      Task #2
+
+      complete 'handleToggleAll' function with redux.
+      create a new action with its appropriate ActionType, action creator and reducer case.
+
+      files should be modified:
+      Same with Task #1
+    */
   }, []);
 
 
