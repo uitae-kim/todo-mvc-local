@@ -3,7 +3,8 @@ import styled from "styled-components";
 import TodoItem from "./TodoItem";
 import Filter from "./Filter";
 import { Input } from "./Input";
-let todoCounter = 1;
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../redux/actions";
 
 const StyledSection = styled.section`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
@@ -27,31 +28,32 @@ const StyledLabel = styled.label`
 
 export const Section = () => {
   const [value, setValue] = React.useState("");
-  const [todos, setTodos] = React.useState([{ id: 0, done: false, content: "Hello~" }]);
+  const todos = useSelector((state) => state.todoReducer.todos);
+  const dispatch = useDispatch();
   const [filter, setFilter] = React.useState("all");
 
   const deleteTodo = React.useCallback((id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
-  }, [todos, setTodos]);
+    dispatch(actions.deleteTodo(id));
+  }, [dispatch]);
 
   const updateTodo = React.useCallback((id, done, content) => {
-    setTodos(todos.map(x => x.id === id ? { ...x, done, content } : x));
-  }, [todos, setTodos]);
+    dispatch(actions.updateTodo(id, done, content));
+  }, [dispatch]);
 
   const addTodo = React.useCallback((e) => {
     if (e.key === "Enter") {
-      setTodos([...todos, { content: value, id: todoCounter++, done: false }]);
+      dispatch(actions.addTodo(value));
       setValue("");
     }
-  }, [value, todos, setTodos, setValue]);
+  }, [value, setValue, dispatch]);
 
   const handleClear = React.useCallback(() => {
-    setTodos(todos.filter(x => x !== "done"));
-  }, [todos, setTodos]);
+    // setTodos(todos.filter(x => x !== "done"));
+  }, []);
 
   const handleToggleAll = React.useCallback(() => {
-    setTodos(todos.map(todo => ({ ...todo, done: !todos.every(todo => todo.done) })));
-  }, [todos, setTodos]);
+    // setTodos(todos.map(todo => ({ ...todo, done: !todos.every(todo => todo.done) })));
+  }, []);
 
 
   return <StyledSection>

@@ -21,8 +21,8 @@ export const todoReducer = (state = INITIAL_STATE, { type, payload }) => {
           if (todo.id === payload.id) {
             return {
               id: todo.id,
-              content: payload.content || todo.content,
-              done: payload.done || todo.done,
+              content: payload.content,
+              done: payload.done,
             };
           } else {
             return todo;
