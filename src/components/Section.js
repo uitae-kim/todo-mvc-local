@@ -48,6 +48,7 @@ export const Section = () => {
   }, [value, setValue, dispatch]);
 
   const handleClear = React.useCallback(() => {
+    ;
     // setTodos(todos.filter(x => x !== "done"));
   }, []);
 
