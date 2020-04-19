@@ -49,7 +49,7 @@ export const Section = () => {
 
   const handleClear = React.useCallback(() => {
     // setTodos(todos.filter(x => x !== "done"));
-
+    dispatch(actions.handleClear());
     /**
       Task #1
 
@@ -62,11 +62,11 @@ export const Section = () => {
       - redux/actions/TodoActions.js
       - redux/reducers/TodoReducer.js
     */
-  }, []);
+  }, [dispatch]);
 
   const handleToggleAll = React.useCallback(() => {
     // setTodos(todos.map(todo => ({ ...todo, done: !todos.every(todo => todo.done) })));
-
+    dispatch(actions.handleToggleAll());
     /**
       Task #2
 
@@ -76,7 +76,7 @@ export const Section = () => {
       files should be modified:
       Same with Task #1
     */
-  }, []);
+  }, [dispatch]);
 
 
   return <StyledSection>

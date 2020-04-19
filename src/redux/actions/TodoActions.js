@@ -14,3 +14,13 @@ export const updateTodo = (id, done, content) => ({
   type: types.UPDATE_TODO,
   payload: { id, content, done },
 });
+
+export const handleClear = () => ({
+  type: types.HANDLE_CLEAR,
+  payload: {},
+});
+
+export const handleToggleAll = () => ({
+  type: types.HANDLE_TOGGLE_ALL,
+  payload: {},
+});
